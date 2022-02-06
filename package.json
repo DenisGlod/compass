@@ -8,10 +8,15 @@
   "scripts": {
     "build-prod": "webpack --node-env production --mode production",
     "build-dev": "webpack --node-env development --mode development",
-    "start-prod": "webpack serve --node-env production --mode production",
-    "start-dev": "webpack serve --node-env development --mode development"
+    "start-prod": "webpack serve --hot --node-env production --mode production",
+    "start-dev": "webpack serve --hot --node-env development --mode development"
   },
   "devDependencies": {
+    "@babel/core": "^7.17.0",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "@hot-loader/react-dom": "^17.0.2",
+    "babel-loader": "^8.2.3",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^10.2.4",
     "css-loader": "^6.6.0",
@@ -21,5 +26,10 @@
     "webpack": "^5.68.0",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.7.4"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-hot-loader": "^4.13.0"
   }
 }

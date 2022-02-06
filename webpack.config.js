@@ -11,7 +11,7 @@ const filenameImg = (ext) => isDev ? `[name]${ext}` : `[name].[contenthash]${ext
 
 module.exports = {
     context: path.resolve(__dirname, 'src/gui'),
-    entry: './js/index.js',
+    entry: ['react-hot-loader/patch', './js/index.js'],
     output: {
         filename: `./js/${filename('js')}`,
         path: path.resolve(__dirname, 'app'),
@@ -37,6 +37,25 @@ module.exports = {
     ],
     module: {
         rules: [
+            {
+                test: /\.(?:|js|jsx)$/, // определяем тип файлов
+                exclude: /(node_modules)/,  // исключаем из обработки папку node_modules
+                loader: "babel-loader",   // определяем загрузчик
+                options: {
+                    presets: [
+                        [
+                            "@babel/preset-env",
+                            {
+                                modules: false
+                            }
+                        ],
+                        "@babel/preset-react"
+                    ],
+                    plugins: [
+                        'react-hot-loader/babel'
+                    ]
+                }
+            },
             {
                 test: /\.html$/i,
                 loader: "html-loader",
